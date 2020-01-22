@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+  <div class="col-xl-4 mt-5">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">username address</label>
+        <input type="username" class="form-control" id="username" placeholder="Enter username"
+          formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">username is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">password is required</div>
+        </div>
+      </div>
+      <button [disabled]="loginForm.invalid" class="btn btn-primary">
+        Login
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </form>
+  </div>
+</div>
